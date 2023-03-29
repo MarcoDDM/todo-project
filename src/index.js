@@ -6,17 +6,17 @@ const clearCompletedButton = document.getElementById('clear-completed');
 
 let tasks = [
   {
-    description: 'Task 1',
+    description: 'Wash the dishes',
     completed: false,
     index: 1,
   },
   {
-    description: 'Task 2',
+    description: 'Do some exercise',
     completed: false,
     index: 2,
   },
   {
-    description: 'Task 3',
+    description: 'Write a pull request',
     completed: false,
     index: 3,
   },
