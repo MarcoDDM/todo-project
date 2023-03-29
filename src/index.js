@@ -1,32 +1,26 @@
 import _ from 'lodash';
 import './style.css';
 
-const taskInput1 = document.getElementById('task-input-1');
-const taskInput2 = document.getElementById('task-input-2');
 const todoList = document.getElementById('todo-list');
 const clearCompletedButton = document.getElementById('clear-completed');
 
-let tasks = [];
-
-taskInput1.addEventListener("keydown", handleKeyPress);
-taskInput2.addEventListener("keydown", handleKeyPress);
-
-function handleKeyPress(event) {
-  if (event.key === 'Enter') {
-    const taskDescription = event.target.value.trim();
-
-    if (taskDescription !== "" && taskDescription !== event.target.defaultValue) {
-      const newTask = {
-        description: taskDescription,
-        completed: false,
-        index: tasks.length + 1,
-      };
-      tasks.push(newTask);
-      event.target.value = "";
-      renderTasks();
-    }
-  }
-}
+let tasks = [
+  {
+    description: 'Task 1',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'Task 2',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'Task 3',
+    completed: false,
+    index: 3,
+  },
+];
 
 function renderTasks() {
   todoList.innerHTML = '';
@@ -47,9 +41,4 @@ function renderTasks() {
   });
 }
 
-function clearCompleted() {
-  tasks = tasks.filter((task) => !task.completed);
-  renderTasks();
-}
-
-clearCompletedButton.addEventListener('click', clearCompleted);
+renderTasks();
