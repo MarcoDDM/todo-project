@@ -1,7 +1,17 @@
-.hello {
-  color: red;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-body {
-  background-color: bisque;
+li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
 }
