@@ -1,10 +1,8 @@
-import _ from 'lodash';
 import './style.css';
 
 const todoList = document.getElementById('todo-list');
-const clearCompletedButton = document.getElementById('clear-completed');
 
-let tasks = [
+const tasks = [
   {
     description: 'Wash the dishes',
     completed: false,
