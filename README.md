@@ -84,7 +84,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-NO DEPLOYED YET
+[View Demo](https://github.com/MarcoDDM/todo-project/pull/2)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
