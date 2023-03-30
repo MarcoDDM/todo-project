@@ -43,7 +43,6 @@ function renderTasks() {
   });
 }
 
-
 if (localStorage.getItem('tasks')) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
   renderTasks();
@@ -73,5 +72,9 @@ function clearCompleted() {
   renderTasks();
   saveTasks();
 }
+
+clearCompletedButton.addEventListener('click', () => {
+  clearCompletedTasks(tasks, renderTasks, saveTasks);
+});
 
 clearCompletedButton.addEventListener('click', clearCompleted);
