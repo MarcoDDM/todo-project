@@ -1,4 +1,5 @@
 import './index.css';
+import { addTask, deleteTask, editTask } from './todoFunctions';
 
 const taskInput1 = document.getElementById('task-input-1');
 const taskInput2 = document.getElementById('task-input-2');
@@ -25,19 +26,7 @@ function renderTasks() {
 
     const span = taskItem.querySelector('span');
     span.addEventListener('dblclick', () => {
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = task.description;
-      span.replaceWith(input);
-
-      input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          task.description = input.value.trim();
-          input.replaceWith(span);
-          renderTasks();
-          saveTasks();
-        }
-      });
+      editTask(task, span, renderTasks, saveTasks);
     });
 
     const checkbox = taskItem.querySelector('input[type="checkbox"]');
@@ -64,10 +53,8 @@ function handleKeyPress(event) {
         completed: false,
         index: tasks.length + 1,
       };
-      tasks.push(newTask);
+      addTask(newTask, tasks, renderTasks, saveTasks);
       event.target.value = '';
-      renderTasks();
-      saveTasks();
     }
   }
 }
@@ -82,3 +69,4 @@ function clearCompleted() {
 }
 
 clearCompletedButton.addEventListener('click', clearCompleted);
+
