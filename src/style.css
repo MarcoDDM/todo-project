@@ -42,7 +42,7 @@ li {
   color: #ccc;
 }
 
-.clear-completed {
+#clear-completed {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
