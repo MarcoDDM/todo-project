@@ -1,7 +1,53 @@
-.hello {
-  color: red;
+body {
+  background-color: rgb(243, 243, 243);
 }
 
-body {
-  background-color: bisque;
+.principal-container {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+}
+
+.principal-container #task-input-1,
+#task-input-2 {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 0 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 97.5%;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.clear-completed {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
