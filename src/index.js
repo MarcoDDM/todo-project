@@ -40,9 +40,9 @@ function renderTasks() {
     });
 
     checkbox.addEventListener('change', () => {
-      updateTaskStatus(task, tasks, renderTasks, saveTasks);
-    });
-    
+  updateTaskStatus(task, tasks, renderTasks, saveTasks);
+});
+
 
     const deleteIcon = taskItem.querySelector('.delete-icon');
     deleteIcon.addEventListener('click', () => {
