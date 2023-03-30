@@ -1,4 +1,4 @@
-import './style.css';
+import './index.css';
 
 const taskInput1 = document.getElementById('task-input-1');
 const taskInput2 = document.getElementById('task-input-2');
