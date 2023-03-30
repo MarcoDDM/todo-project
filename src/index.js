@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 const taskInput1 = document.getElementById('task-input-1');
@@ -8,36 +7,14 @@ const clearCompletedButton = document.getElementById('clear-completed');
 
 let tasks = [];
 
-if (localStorage.getItem('tasks')) {
-  tasks = JSON.parse(localStorage.getItem('tasks'));
-  renderTasks();
-}
-
-taskInput1.addEventListener("keydown", handleKeyPress);
-taskInput2.addEventListener("keydown", handleKeyPress);
-
-function handleKeyPress(event) {
-  if (event.key === 'Enter') {
-    const taskDescription = event.target.value.trim();
-
-    if (taskDescription !== "" && taskDescription !== event.target.defaultValue) {
-      const newTask = {
-        description: taskDescription,
-        completed: false,
-        index: tasks.length + 1,
-      };
-      tasks.push(newTask);
-      event.target.value = "";
-      renderTasks();
-      saveTasks();
-    }
-  }
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function renderTasks() {
   todoList.innerHTML = '';
 
-  tasks.forEach((task, index) => {
+  tasks.forEach((task) => {
     const taskItem = document.createElement('li');
     taskItem.innerHTML = `
       <input type="checkbox" ${task.completed ? 'checked' : ''}>
@@ -72,14 +49,36 @@ function renderTasks() {
   });
 }
 
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  renderTasks();
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    const taskDescription = event.target.value.trim();
+
+    if (taskDescription !== '' && taskDescription !== event.target.defaultValue) {
+      const newTask = {
+        description: taskDescription,
+        completed: false,
+        index: tasks.length + 1,
+      };
+      tasks.push(newTask);
+      event.target.value = '';
+      renderTasks();
+      saveTasks();
+    }
+  }
+}
+
+taskInput1.addEventListener('keydown', handleKeyPress);
+taskInput2.addEventListener('keydown', handleKeyPress);
+
 function clearCompleted() {
   tasks = tasks.filter((task) => !task.completed);
   renderTasks();
   saveTasks();
-}
-
-function saveTasks() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 clearCompletedButton.addEventListener('click', clearCompleted);
