@@ -1,24 +1,16 @@
-import './style.css';
+import './index.css';
+import { addTask, deleteTask, editTask } from './todoFunctions.js';
 
+const taskInput1 = document.getElementById('task-input-1');
+const taskInput2 = document.getElementById('task-input-2');
 const todoList = document.getElementById('todo-list');
+const clearCompletedButton = document.getElementById('clear-completed');
 
-const tasks = [
-  {
-    description: 'Wash the dishes',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Do some exercise',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Write a pull request',
-    completed: false,
-    index: 3,
-  },
-];
+let tasks = [];
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function renderTasks() {
   todoList.innerHTML = '';
@@ -28,15 +20,58 @@ function renderTasks() {
     taskItem.innerHTML = `
       <input type="checkbox" ${task.completed ? 'checked' : ''}>
       <span>${task.description}</span>
+      <span class="delete-icon" style="font-family: arial; float: right; cursor:pointer;"><b>x</b></span>
     `;
     taskItem.className = task.completed ? 'completed' : '';
     todoList.appendChild(taskItem);
 
-    taskItem.querySelector('input[type="checkbox"]').addEventListener('click', () => {
+    const span = taskItem.querySelector('span');
+    span.addEventListener('dblclick', () => {
+      editTask(task, span, renderTasks, saveTasks);
+    });
+
+    const checkbox = taskItem.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener('click', () => {
       task.completed = !task.completed;
       taskItem.className = task.completed ? 'completed' : '';
+      saveTasks();
+    });
+
+    const deleteIcon = taskItem.querySelector('.delete-icon');
+    deleteIcon.addEventListener('click', () => {
+      deleteTask(task, tasks, renderTasks, saveTasks);
     });
   });
 }
 
-renderTasks();
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  renderTasks();
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    const taskDescription = event.target.value.trim();
+
+    if (taskDescription !== '' && taskDescription !== event.target.defaultValue) {
+      const newTask = {
+        description: taskDescription,
+        completed: false,
+        index: tasks.length + 1,
+      };
+      addTask(newTask, tasks, renderTasks, saveTasks);
+      event.target.value = '';
+    }
+  }
+}
+
+taskInput1.addEventListener('keydown', handleKeyPress);
+taskInput2.addEventListener('keydown', handleKeyPress);
+
+function clearCompleted() {
+  tasks = tasks.filter((task) => !task.completed);
+  renderTasks();
+  saveTasks();
+}
+
+clearCompletedButton.addEventListener('click', clearCompleted);
