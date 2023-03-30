@@ -8,6 +8,11 @@ const clearCompletedButton = document.getElementById('clear-completed');
 
 let tasks = [];
 
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  renderTasks();
+}
+
 taskInput1.addEventListener("keydown", handleKeyPress);
 taskInput2.addEventListener("keydown", handleKeyPress);
 
@@ -24,6 +29,7 @@ function handleKeyPress(event) {
       tasks.push(newTask);
       event.target.value = "";
       renderTasks();
+      saveTasks();
     }
   }
 }
@@ -52,6 +58,7 @@ function renderTasks() {
           task.description = input.value.trim();
           input.replaceWith(span);
           renderTasks();
+          saveTasks();
         }
       });
     });
@@ -60,6 +67,7 @@ function renderTasks() {
     checkbox.addEventListener('click', () => {
       task.completed = !task.completed;
       taskItem.className = task.completed ? 'completed' : '';
+      saveTasks();
     });
   });
 }
@@ -67,6 +75,11 @@ function renderTasks() {
 function clearCompleted() {
   tasks = tasks.filter((task) => !task.completed);
   renderTasks();
+  saveTasks();
+}
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 clearCompletedButton.addEventListener('click', clearCompleted);
