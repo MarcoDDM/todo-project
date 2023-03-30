@@ -1,5 +1,7 @@
 import './index.css';
 import { addTask, deleteTask, editTask } from './todoFunctions.js';
+import { updateTaskStatus, clearCompletedTasks } from './updateFunctions.js';
+
 
 const taskInput1 = document.getElementById('task-input-1');
 const taskInput2 = document.getElementById('task-input-2');
@@ -36,6 +38,11 @@ function renderTasks() {
       taskItem.className = task.completed ? 'completed' : '';
       saveTasks();
     });
+
+    checkbox.addEventListener('change', () => {
+      updateTaskStatus(task, tasks, renderTasks, saveTasks);
+    });
+    
 
     const deleteIcon = taskItem.querySelector('.delete-icon');
     deleteIcon.addEventListener('click', () => {
