@@ -2,7 +2,6 @@ import './index.css';
 import { addTask, deleteTask, editTask } from './todoFunctions.js';
 import { updateTaskStatus, clearCompletedTasks } from './updateFunctions.js';
 
-
 const taskInput1 = document.getElementById('task-input-1');
 const taskInput2 = document.getElementById('task-input-2');
 const todoList = document.getElementById('todo-list');
@@ -34,15 +33,8 @@ function renderTasks() {
 
     const checkbox = taskItem.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('click', () => {
-      task.completed = !task.completed;
-      taskItem.className = task.completed ? 'completed' : '';
-      saveTasks();
+      updateTaskStatus(task, tasks, renderTasks, saveTasks);
     });
-
-    checkbox.addEventListener('change', () => {
-  updateTaskStatus(task, tasks, renderTasks, saveTasks);
-});
-
 
     const deleteIcon = taskItem.querySelector('.delete-icon');
     deleteIcon.addEventListener('click', () => {
@@ -50,6 +42,7 @@ function renderTasks() {
     });
   });
 }
+
 
 if (localStorage.getItem('tasks')) {
   tasks = JSON.parse(localStorage.getItem('tasks'));

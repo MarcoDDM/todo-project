@@ -9,3 +9,5 @@ function clearCompletedTasks(tasks, renderTasks, saveTasks) {
   saveTasks();
   renderTasks();
 }
+
+export { updateTaskStatus, clearCompletedTasks };

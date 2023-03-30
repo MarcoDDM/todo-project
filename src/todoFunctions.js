@@ -1,14 +1,14 @@
-const addTask = (newTask, tasks, renderTasks, saveTasks) =>{
+const addTask = (newTask, tasks, renderTasks, saveTasks) => {
   tasks.push(newTask);
   renderTasks();
   saveTasks();
-}
+};
 
 const deleteTask = (taskToDelete, tasks, renderTasks, saveTasks) => {
   tasks.splice(tasks.indexOf(taskToDelete), 1);
   renderTasks();
   saveTasks();
-}
+};
 
 const editTask = (taskToEdit, span, renderTasks, saveTasks) => {
   const input = document.createElement('input');
@@ -24,6 +24,6 @@ const editTask = (taskToEdit, span, renderTasks, saveTasks) => {
       saveTasks();
     }
   });
-}
+};
 
 export { addTask, deleteTask, editTask };
