@@ -1,5 +1,5 @@
 import './index.css';
-import { addTask, deleteTask, editTask } from './todoFunctions';
+import { addTask, deleteTask, editTask } from './todoFunctions.js';
 
 const taskInput1 = document.getElementById('task-input-1');
 const taskInput2 = document.getElementById('task-input-2');
@@ -43,7 +43,6 @@ function renderTasks() {
     });
   });
 }
-
 
 if (localStorage.getItem('tasks')) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
