@@ -20,6 +20,7 @@ function renderTasks() {
     taskItem.innerHTML = `
       <input type="checkbox" ${task.completed ? 'checked' : ''}>
       <span>${task.description}</span>
+      <span class="delete-icon" style="font-family: arial; float: right; cursor:pointer;"><b>x</b></span>
     `;
     taskItem.className = task.completed ? 'completed' : '';
     todoList.appendChild(taskItem);
@@ -35,8 +36,14 @@ function renderTasks() {
       taskItem.className = task.completed ? 'completed' : '';
       saveTasks();
     });
+
+    const deleteIcon = taskItem.querySelector('.delete-icon');
+    deleteIcon.addEventListener('click', () => {
+      deleteTask(task, tasks, renderTasks, saveTasks);
+    });
   });
 }
+
 
 if (localStorage.getItem('tasks')) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -69,4 +76,3 @@ function clearCompleted() {
 }
 
 clearCompletedButton.addEventListener('click', clearCompleted);
-
