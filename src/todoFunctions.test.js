@@ -29,6 +29,16 @@ describe('addTask', () => {
     expect(renderTasksMock).toHaveBeenCalled();
     expect(saveTasksMock).toHaveBeenCalled();
   });
+
+  test('should not add a task to the tasks array when the new task is an empty string', () => {
+    const tasks = [];
+    const newTask = '';
+
+    addTask(newTask, tasks, jest.fn(), jest.fn());
+
+    expect(tasks).not.toContain(newTask);
+    expect(tasks).toHaveLength(0);
+  });
 });
 
 describe('deleteTask', () => {
@@ -48,5 +58,16 @@ describe('deleteTask', () => {
 
     expect(renderTasksMock).toHaveBeenCalled();
     expect(saveTasksMock).toHaveBeenCalled();
+  });
+
+  test('should not remove a task from the tasks array when the task is not in the array', () => {
+    const tasks = ['Do laundry', 'Buy groceries', 'Clean the house'];
+
+    deleteTask('Wash dishes', tasks, jest.fn(), jest.fn());
+
+    expect(tasks).toContain('Do laundry');
+    expect(tasks).toContain('Buy groceries');
+    expect(tasks).toContain('Clean the house');
+    expect(tasks).toHaveLength(3);
   });
 });
