@@ -1,5 +1,5 @@
 const addTask = (newTask, tasks, renderTasks, saveTasks) => {
-  if (newTask.trim() !== "") {
+  if (newTask.trim() !== '') {
     tasks.push(newTask);
     renderTasks();
     saveTasks();
@@ -24,7 +24,7 @@ const editTask = (taskToEdit, span, renderTasks, saveTasks) => {
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       const newDescription = input.value.trim();
-      if (newDescription !== "") {
+      if (newDescription !== '') {
         taskToEdit.description = newDescription;
         input.replaceWith(span);
         renderTasks();
