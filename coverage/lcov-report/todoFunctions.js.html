@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.36% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/19</span>
+                <span class='fraction'>12/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.36% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/19</span>
+                <span class='fraction'>12/24</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,16 +92,29 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -116,21 +129,29 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const addTask = (newTask, tasks, renderTasks, saveTasks) =&gt; {
-  tasks.push(newTask);
-  renderTasks();
-  saveTasks();
+  if (newTask.trim() !== "") {
+    tasks.push(newTask);
+    renderTasks();
+    saveTasks();
+  }
 };
 &nbsp;
 const deleteTask = (taskToDelete, tasks, renderTasks, saveTasks) =&gt; {
-  tasks.splice(tasks.indexOf(taskToDelete), 1);
-  renderTasks();
-  saveTasks();
+  const index = tasks.indexOf(taskToDelete);
+  if (index !== -1) {
+    tasks.splice(index, 1);
+    renderTasks();
+    saveTasks();
+  }
 };
 &nbsp;
 const editTask = <span class="fstat-no" title="function not covered" >(t</span>askToEdit, span, renderTasks, saveTasks) =&gt; {
@@ -141,10 +162,13 @@ const editTask = <span class="fstat-no" title="function not covered" >(t</span>a
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  input.addEventListener('keydown', <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (event.key === 'Enter') {</span>
-<span class="cstat-no" title="statement not covered" >      taskToEdit.description = input.value.trim();</span>
-<span class="cstat-no" title="statement not covered" >      input.replaceWith(span);</span>
-<span class="cstat-no" title="statement not covered" >      renderTasks();</span>
-<span class="cstat-no" title="statement not covered" >      saveTasks();</span>
+      const newDescription = <span class="cstat-no" title="statement not covered" >input.value.trim();</span>
+<span class="cstat-no" title="statement not covered" >      if (newDescription !== "") {</span>
+<span class="cstat-no" title="statement not covered" >        taskToEdit.description = newDescription;</span>
+<span class="cstat-no" title="statement not covered" >        input.replaceWith(span);</span>
+<span class="cstat-no" title="statement not covered" >        renderTasks();</span>
+<span class="cstat-no" title="statement not covered" >        saveTasks();</span>
+      }
     }
   });
 };
@@ -157,7 +181,7 @@ export { addTask, deleteTask, editTask };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-06T16:57:18.065Z
+                at 2023-04-06T21:04:29.991Z
             </div>
         <script src="prettify.js"></script>
         <script>
