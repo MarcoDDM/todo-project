@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">70.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/24</span>
+                <span class='fraction'>17/24</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">70.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/24</span>
+                <span class='fraction'>17/24</span>
             </div>
         
             
@@ -100,30 +100,30 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -138,7 +138,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const addTask = (newTask, tasks, renderTasks, saveTasks) =&gt; {
-  if (newTask.trim() !== "") {
+  if (newTask.trim() !== '') {
     tasks.push(newTask);
     renderTasks();
     saveTasks();
@@ -154,16 +154,16 @@ const deleteTask = (taskToDelete, tasks, renderTasks, saveTasks) =&gt; {
   }
 };
 &nbsp;
-const editTask = <span class="fstat-no" title="function not covered" >(t</span>askToEdit, span, renderTasks, saveTasks) =&gt; {
-  const input = <span class="cstat-no" title="statement not covered" >document.createElement('input');</span>
-<span class="cstat-no" title="statement not covered" >  input.type = 'text';</span>
-<span class="cstat-no" title="statement not covered" >  input.value = taskToEdit.description;</span>
-<span class="cstat-no" title="statement not covered" >  span.replaceWith(input);</span>
+const editTask = (taskToEdit, span, renderTasks, saveTasks) =&gt; {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = taskToEdit.description;
+  span.replaceWith(input);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  input.addEventListener('keydown', <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
+  input.addEventListener('keydown', <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
 <span class="cstat-no" title="statement not covered" >    if (event.key === 'Enter') {</span>
       const newDescription = <span class="cstat-no" title="statement not covered" >input.value.trim();</span>
-<span class="cstat-no" title="statement not covered" >      if (newDescription !== "") {</span>
+<span class="cstat-no" title="statement not covered" >      if (newDescription !== '') {</span>
 <span class="cstat-no" title="statement not covered" >        taskToEdit.description = newDescription;</span>
 <span class="cstat-no" title="statement not covered" >        input.replaceWith(span);</span>
 <span class="cstat-no" title="statement not covered" >        renderTasks();</span>
@@ -181,7 +181,7 @@ export { addTask, deleteTask, editTask };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-06T21:04:29.991Z
+                at 2023-04-07T02:39:24.835Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -281,12 +281,6 @@ table.coverage td span.cline-any {
   height: 12px;
 }
 
-/* dark green */
-.status-line.high,
-.high .cover-fill {
-  background: rgb(77, 146, 33);
-}
-
 /* dark red */
 .red.solid,
 .status-line.low,
@@ -331,6 +325,12 @@ table.coverage td span.cline-any {
 /* medium green */
 .cstat-yes {
   background: rgb(161, 215, 106);
+}
+
+/* dark green */
+.status-line.high,
+.high .cover-fill {
+  background: rgb(77, 146, 33);
 }
 
 .high .chart {
