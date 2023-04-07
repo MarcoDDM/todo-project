@@ -1,10 +1,10 @@
+import { updateTaskStatus, clearCompletedTasks } from '../updateFunctions.js';
+import { editTask } from '../todoFunctions.js';
 
 const { JSDOM } = require('jsdom');
+
 const dom = new JSDOM();
 global.document = dom.window.document;
-
-import { updateTaskStatus, clearCompletedTasks } from '../updateFunctions';
-import { editTask } from '../todoFunctions';
 
 describe('updateTaskStatus()', () => {
   test('should change task status to completed', () => {
@@ -23,17 +23,17 @@ describe('updateTaskStatus()', () => {
 
 describe('clearCompletedTasks()', () => {
   test('should remove all completed tasks', () => {
-    const tasks = [    { id: 1, title: 'Task 1', completed: true },    { id: 2, title: 'Task 2', completed: false },    { id: 3, title: 'Task 3', completed: true },  ];
-  
+    const tasks = [{ id: 1, title: 'Task 1', completed: true }, { id: 2, title: 'Task 2', completed: false }, { id: 3, title: 'Task 3', completed: true }];
+
     const saveTasks = jest.fn();
     const renderTasks = jest.fn();
-  
+
     clearCompletedTasks(tasks, renderTasks, saveTasks);
-  
+
     expect(tasks.length).toBe(3);
     expect(saveTasks).toHaveBeenCalled();
     expect(renderTasks).toHaveBeenCalled();
-  });  
+  });
 });
 
 describe('editTask()', () => {
@@ -46,4 +46,3 @@ describe('editTask()', () => {
     expect(span.replaceWith).toHaveBeenCalled();
   });
 });
-
